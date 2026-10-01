@@ -1,0 +1,8 @@
+{
+  "appId": "com.veerblox.quietkey",
+  "appName": "QuietKey",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}

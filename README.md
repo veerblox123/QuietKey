@@ -11,8 +11,8 @@ Open `index.html` in a modern browser. For Web Crypto support, use `https://` or
 GitHub Actions builds Windows (`.exe` installer), macOS (`.dmg` and `.zip`), Linux (`.AppImage` and `.deb`), and Android (`.apk`) downloads for version tags. To make a release after installing the project dependencies, create and push a version tag, for example:
 
 ```sh
-git tag v1.0.0
-git push origin v1.0.0
+git tag v1.0.1
+git push origin v1.0.1
 ```
 
 When the builds finish, GitHub Actions publishes a release with the installers attached. Desktop downloads are unsigned, so operating systems may show a warning before first launch. The Android download is a debug-signed APK for direct installation, not a Play Store bundle.

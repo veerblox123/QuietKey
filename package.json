@@ -1,16 +1,19 @@
 {
   "name": "quietkey",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Private, on-device message encryption",
-  "author": "veerblox123",
+  "author": {
+    "name": "veerblox123",
+    "email": "aveer1942@gmail.com"
+  },
   "main": "main.cjs",
   "scripts": {
     "start": "electron .",
-    "build:desktop": "electron-builder",
-    "build:desktop:windows": "electron-builder --win nsis --x64",
-    "build:desktop:linux": "electron-builder --linux AppImage deb --x64",
-    "build:desktop:mac": "electron-builder --mac dmg zip",
+    "build:desktop": "electron-builder --publish never",
+    "build:desktop:windows": "electron-builder --win nsis --x64 --publish never",
+    "build:desktop:linux": "electron-builder --linux AppImage deb --x64 --publish never",
+    "build:desktop:mac": "electron-builder --mac dmg zip --publish never",
     "build:web": "node scripts/prepare-web.mjs",
     "build:android": "npm run build:web && cap sync android && cd android && ./gradlew assembleDebug"
   },

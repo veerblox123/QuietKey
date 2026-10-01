@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f4ef">
+  <title>QuietKey — private messages</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="QuietKey home"><span class="brand-mark">q</span> quietkey</a>
+      <span class="local-note"><span class="status-dot"></span> Private by design</span>
+    </header>
+
+    <section class="intro">
+      <div class="eyebrow"><span class="sparkle">✳</span> A little privacy goes a long way</div>
+      <h1>Your words,<br><em>under lock and key.</em></h1>
+      <p class="lede">Turn a message into a secret only someone with the key can read. Everything happens right here in your browser.</p>
+    </section>
+
+    <section class="workspace" aria-label="Message encryption tools">
+      <div class="tabs" role="tablist" aria-label="Choose an action">
+        <button class="tab active" id="encrypt-tab" role="tab" aria-selected="true" aria-controls="encrypt-panel">Encrypt a message <span>↗</span></button>
+        <button class="tab" id="decrypt-tab" role="tab" aria-selected="false" aria-controls="decrypt-panel">Decrypt a message <span>↙</span></button>
+      </div>
+
+      <div class="panel" id="encrypt-panel" role="tabpanel" aria-labelledby="encrypt-tab">
+        <div class="field-heading"><label for="message">Your message</label><span id="char-count">0 / 10,000</span></div>
+        <textarea id="message" maxlength="10000" placeholder="Write or paste something you want to keep private…"></textarea>
+        <div class="actions"><button class="primary" id="encrypt-button">Encrypt message <span>→</span></button><span class="hint">A one-time key is created for you</span></div>
+        <div class="result hidden" id="encrypt-result" aria-live="polite">
+          <div class="result-title"><span class="result-icon">✓</span><div><strong>Your message is locked</strong><small>Share both the encrypted message and its key.</small></div></div>
+          <div class="output-block"><div class="output-label">ENCRYPTED MESSAGE <button class="text-button" data-copy="cipher-output">Copy</button></div><textarea id="cipher-output" readonly aria-label="Encrypted message"></textarea></div>
+          <div class="output-block"><div class="output-label">SECRET KEY <button class="text-button" data-copy="key-output">Copy</button></div><div class="key-line"><input id="key-output" readonly aria-label="Secret key"><button class="icon-button" id="toggle-key" aria-label="Show or hide key">◉</button></div><p class="warning">Keep this key safe. Anyone who has it can read your message. If you lose it, the message cannot be recovered.</p></div>
+          <button class="secondary download" id="download-button">Download encrypted message + key <span>↓</span></button>
+        </div>
+      </div>
+
+      <div class="panel hidden" id="decrypt-panel" role="tabpanel" aria-labelledby="decrypt-tab" tabindex="0">
+        <div class="field-heading"><label for="cipher-input">Encrypted message</label></div>
+        <textarea id="cipher-input" placeholder="Paste the complete encrypted message here…"></textarea>
+        <div class="field-heading key-heading"><label for="decrypt-key">Secret key</label></div>
+        <input class="text-input" id="decrypt-key" type="password" placeholder="Paste the matching secret key">
+        <div class="actions"><button class="primary" id="decrypt-button">Unlock message <span>→</span></button><span class="hint">Your message stays in this browser</span></div>
+        <div class="error hidden" id="decrypt-error" role="alert"></div>
+        <div class="result hidden" id="decrypt-result" aria-live="polite"><div class="result-title"><span class="result-icon">✓</span><div><strong>Message unlocked</strong><small>Here’s the original message.</small></div></div><div class="output-block"><div class="output-label">YOUR MESSAGE <button class="text-button" data-copy="plain-output">Copy</button></div><textarea id="plain-output" readonly aria-label="Decrypted message"></textarea></div></div>
+      </div>
+    </section>
+
+    <section class="how-it-works"><div><span class="step-number">01</span><strong>Write a message</strong><p>Type the words you want to protect.</p></div><div><span class="step-number">02</span><strong>Get your key</strong><p>A fresh, random key locks your message.</p></div><div><span class="step-number">03</span><strong>Share safely</strong><p>Send the message and key separately.</p></div></section>
+    <footer><span>Made for messages that matter.</span><span><span class="lock">⌑</span> AES-GCM · Processed on your device</span></footer>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
